@@ -1,0 +1,23 @@
+{% extends 'BloggerBlogBundle::layout.html.twig' %}
+
+{% block title %}{{ company.title }}{% endblock %}
+
+{% block body_title %}{{ company.title }} - Практика{% endblock %}
+
+{% block body_content %}
+    <div id="about-company-container">
+        <div class="about-company">
+            <article class="row">
+                <div class="img-container col-lg-5"><img src="{{ asset(['images/company/', company.slug, '/', company.image]|join) }}" alt="{{ company.title }}"></div>
+                {% set foo =  company.text|split('\n') %}
+                {% for line in foo %}
+                    <p>{{ line }}</p>
+                {% endfor %}
+            </article>
+        </div>
+        <hr>
+        <div id="accordion" class="panel-group">
+            {% include 'BloggerBlogBundle:Student:index.html.twig' with { 'groups': groups } %}
+        </div>
+    </div>
+{% endblock %}

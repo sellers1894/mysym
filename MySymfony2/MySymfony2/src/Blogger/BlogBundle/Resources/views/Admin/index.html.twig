@@ -1,0 +1,21 @@
+{% extends 'BloggerBlogBundle::layout.html.twig' %}
+
+{% block title %}Adminka{% endblock%}
+
+
+{% block body_title %}Добро пожаловать на администраторскую страницу, {{ app.user.username }}!{% endblock %}
+
+{% block body_content %}
+    <h3>Редактирование пользователей</h3>
+    {{  render(controller("BloggerBlogBundle:Admin:getEditUserForm")) }}
+    <hr>
+    <hr>
+    <hr>
+    <h3>Редактирование компаний</h3>
+    {{  render(controller("BloggerBlogBundle:Admin:addCompany")) }}
+    <hr>
+    <hr>
+    <hr>
+    <h3>Редактирование Слайдера</h3>
+    {{  render(controller("BloggerBlogBundle:Admin:addSlider")) }}
+{% endblock %}

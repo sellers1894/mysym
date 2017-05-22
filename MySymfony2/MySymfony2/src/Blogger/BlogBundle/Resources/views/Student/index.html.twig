@@ -1,0 +1,47 @@
+{% for group in groups %}
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a href="#collapse-{{ loop.index }}" data-parent="#accordion" data-toggle="collapse">{{ group.title }} группа</a>
+        </h4>
+    </div>
+
+    <div class="panel-collapse collapse {% if loop.first == true %} in {% endif %}" id="collapse-{{ loop.index }}">
+        <div class="panel-body">
+            <table class="table">
+
+                <thead class="thead">
+                <tr>
+                    <th>#</th>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th class="hidden-md-th">E-mail</th>
+                    <th class="hidden-md-th">Дата начала</th>
+                    <th class="hidden-md-th">Дата окончания</th>
+                    <th class="hidden-md-th">Защита</th>
+                    <th class="hidden-md-th">Оценка</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for student in group.students %}
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>{{ student.name }}</td>
+                            <td>{{ student.getLastName }}</td>
+                            <td  class="hidden-md-th">{{ student.email }}</td>
+                            <td  class="hidden-md-th">{{ student.getDateStart|date('d.m.Y') }}</td>
+                            <td  class="hidden-md-th">{{ student.getDateFinish|date('d.m.Y') }}</td>
+                            <td  class="hidden-md-th">{{ student.protect|is_protect }}</td>
+                            <td  class="hidden-md-th">{{ student.getMark|is_mark }}</td>
+                        </tr>
+                    {% else %}
+                        <p>Студентов на практике нет...</p>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% else %}
+    <p>Студентов на практике нет...</p>
+{% endfor %}

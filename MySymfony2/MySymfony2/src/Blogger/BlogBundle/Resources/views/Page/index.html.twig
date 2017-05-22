@@ -1,0 +1,17 @@
+{# src/Blogger/BlogBundle/Resources/views/Page/index.html.twig #}
+{% extends 'BloggerBlogBundle::layout.html.twig' %}
+
+{% block page_top %}
+    {{ render(controller('BloggerBlogBundle:Page:slider' ))}}
+{% endblock %}
+
+{% block body_title %}О сайте{% endblock %}
+
+{% block body_content %}
+    <h3>Predegree Practice</h3>
+    <p>Данный сайт был разработан и созданц с целью информирования студентов о месте прохождения производственой практики</p>
+    <p>Данный сайт поможет узнать студентам в какои именно организации оно проходят практику</p>
+    <p>Организации так же могут предоставить место для прохождении практики</p>
+    <p>На сайте кураторы практики(в университете) могут отслеживать, какую оценку ставит организация определенному студенту</p>
+
+{% endblock %}

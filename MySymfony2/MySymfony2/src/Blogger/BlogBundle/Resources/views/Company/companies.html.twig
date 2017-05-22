@@ -1,0 +1,24 @@
+{% extends 'BloggerBlogBundle::layout.html.twig' %}
+
+{% block title %}Компании{% endblock%}
+
+{% block body_title %}О компаниях{% endblock %}
+
+{% block body_content %}
+    <div id="about-company-container">
+        {% for company in companies %}
+            <div class="about-company">
+                <h3>{{ company.title }}</h3>
+                <article class="row">
+                    <div class="img-container col-lg-5"><img src="{{ asset(['images/company/', company.slug, '/', company.image]|join) }}" alt="{{ company.title }}"></div>
+                    {% set foo =  company.text|split('\n') %}
+                    {% for line in foo %}
+                        <p>{{ line }}</p>
+                    {% endfor %}
+                </article>
+                <a href="{{ path('BloggerBlogBundle_company_show', {'id': company.id, 'slug': company.slug}) }}" class="btn btn-success">Подробнее</a>
+            </div>
+            <hr>
+        {% endfor %}
+    </div>
+{% endblock %}

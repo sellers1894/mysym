@@ -1,0 +1,134 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Andrey
+ * Date: 29.04.2017
+ * Time: 23:48
+ */
+
+namespace Blogger\BlogBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Mapping\ClassMetadata;
+
+/**
+ * @ORM\Entity(repositoryClass="Blogger\BlogBundle\Entity\Repository\DocumentRepository")
+ * @ORM\Table(name="document")
+ * @ORM\HasLifecycleCallbacks
+ */
+
+class Document{
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    public $id;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+     */
+    public $name;
+
+    /**
+     * @Assert\File(maxSize="6000000")
+     */
+    public $file;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\NotBlank(message="Please, upload the product brochure as a PDF file.")
+     * @Assert\File(mimeTypes={ "image/png" })
+     */
+    public $path;
+
+    public function getAbsolutePath()
+    {
+        return null === $this->path ? null : $this->getUploadRootDir().'/'.$this->path;
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->path ? null : $this->getUploadDir().'/'.$this->path;
+    }
+
+    protected function getUploadRootDir()
+    {
+        // абсолютный путь к каталогу, куда будут сохраняться загруженные документы
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+        //избавьтесь от __ DIR __, так чтобы его не было, когда отображался загруженный документ/изображение
+        return 'images/documents';
+    }
+
+
+    public static function loadValidatorMetadata(ClassMetadata $metadata){
+        $metadata->addPropertyConstraint('name', new NotBlank(array(
+            'message' => 'You must enter your name'
+        )));
+    }
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return Document
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set path
+     *
+     * @param string $path
+     *
+     * @return Document
+     */
+    public function setPath($path)
+    {
+        $this->path = $path;
+
+        return $this;
+    }
+
+    /**
+     * Get path
+     *
+     * @return string
+     */
+    public function getPath()
+    {
+        return $this->path;
+    }
+}

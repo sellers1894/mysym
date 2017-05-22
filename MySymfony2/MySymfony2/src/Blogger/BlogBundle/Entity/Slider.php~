@@ -1,0 +1,38 @@
+<?php
+namespace Blogger\BlogBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity(repositoryClass="Blogger\BlogBundle\Entity\Repository\SliderRepository")
+ * @ORM\Table(name="slider")
+ * @ORM\HasLifecycleCallbacks
+ */
+class Slider{
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $title;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $text;
+
+    /**
+     * @ORM\Column(type="string", length=20)
+     */
+    protected $image;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Company", inversedBy="slider")
+     * @ORM\JoinColumn(name="company_id", referencedColumnName="id")
+     */
+    protected $company;
+}

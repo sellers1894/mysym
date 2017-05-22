@@ -1,0 +1,137 @@
+# src/Blogger/BlogBundle/Resources/config/routing.yml
+_security_login:
+    path:  /login
+    defaults: { _controller: "BloggerBlogBundle:Security:login" }
+
+_security_check:
+    path:  /login_check
+
+_security_logout:
+    path:  /logout
+
+admin_home:
+    path:  /admin/
+    defaults: { _controller: "BloggerBlogBundle:Admin:index" }
+    requirements:
+           methods:  GET
+
+BloggerBlogBundle_admin_add_user:
+    path:  /admin/adduser
+    defaults: { _controller: "BloggerBlogBundle:Admin:addUser" }
+    requirements:
+            methods:  POST
+
+BloggerBlogBundle_admin_delete_user:
+    path:  /admin/deleteuser
+    defaults: { _controller: "BloggerBlogBundle:Admin:deleteUser" }
+    requirements:
+            methods:  POST
+
+BloggerBlogBundle_admin_add_company:
+    path:  /admin/addcompany
+    defaults: { _controller: "BloggerBlogBundle:Admin:addCompany" }
+    requirements:
+            methods:  POST
+
+BloggerBlogBundle_admin_delete_company:
+    path:  /admin/deletecompany
+    defaults: { _controller: "BloggerBlogBundle:Admin:deleteCompany" }
+    requirements:
+            methods:  POST
+
+
+BloggerBlogBundle_admin_add_slider:
+    path:  /admin/addslider
+    defaults: { _controller: "BloggerBlogBundle:Admin:addSlider" }
+    requirements:
+            methods:  POST
+
+BloggerBlogBundle_admin_delete_slider:
+    path:  /admin/deleteslider
+    defaults: { _controller: "BloggerBlogBundle:Admin:deleteSlider" }
+    requirements:
+            methods:  POST
+
+
+
+
+
+
+BloggerBlogBundle_teacher_home:
+    path:  /teacher/
+    defaults: { _controller: "BloggerBlogBundle:Teacher:index" }
+    requirements:
+           methods:  GET
+
+BloggerBlogBundle_teacher_add_group:
+    path:  /teacher/addgroup
+    defaults: { _controller: "BloggerBlogBundle:Teacher:addGroup" }
+    requirements:
+           methods:  POST
+
+BloggerBlogBundle_teacher_delete_group:
+    path:  /teacher/deletegroup
+    defaults: { _controller: "BloggerBlogBundle:Teacher:deleteGroup" }
+    requirements:
+           methods:  POST
+
+BloggerBlogBundle_teacher_add_student:
+    path:  /teacher/addstudent
+    defaults: { _controller: "BloggerBlogBundle:Teacher:addStudent" }
+    requirements:
+           methods:  POST
+
+BloggerBlogBundle_teacher_delete_student:
+    path:  /teacher/deletestudent
+    defaults: { _controller: "BloggerBlogBundle:Teacher:deleteStudent" }
+    requirements:
+           methods:  POST
+
+BloggerBlogBundle_teacher_edit_company:
+    path:  /teacher/company
+    defaults: { _controller: "BloggerBlogBundle:Teacher:editCompany" }
+    requirements:
+           methods:  POST
+
+BloggerBlogBundle_teacher_edit_company_student:
+    path:  /teacher/company/student
+    defaults: { _controller: "BloggerBlogBundle:Teacher:editCompanyStudent" }
+    requirements:
+           methods:  POST
+
+
+
+
+
+
+
+
+
+
+
+
+BloggerBlogBundle_homepage:
+    path:     /
+    defaults: { _controller: "BloggerBlogBundle:Page:index" }
+    requirements:
+         methods:  GET
+
+
+BloggerBlogBundle_about:
+    path:   /about
+    defaults: { _controller: "BloggerBlogBundle:Page:about" }
+    requirements:
+         methods:  GET|POST
+
+BloggerBlogBundle_company:
+   path:  /company
+   defaults: { _controller: "BloggerBlogBundle:Company:index" }
+   requirements:
+       methods:  GET
+
+BloggerBlogBundle_company_show:
+   path:  /{id}/{slug}
+   defaults: { _controller: "BloggerBlogBundle:Company:show" }
+   requirements:
+       methods:  GET
+       id: \d+

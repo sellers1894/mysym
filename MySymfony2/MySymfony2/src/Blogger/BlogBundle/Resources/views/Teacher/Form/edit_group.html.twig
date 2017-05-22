@@ -1,0 +1,41 @@
+{% if message_group %}
+    <div class="error">{{ message_group }}</div>
+    <hr>
+{% endif %}
+
+<div class="tabs">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab-1" data-toggle="tab">Добавить</a></li>
+        <li><a href="#tab-2" data-toggle="tab">Удалить</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane fade in active" id="tab-1">
+
+            {{ form_start(form, { 'action': path('BloggerBlogBundle_teacher_add_group'), 'method': 'POST', 'attr': {'class': 'blogger'} }) }}
+            <div class="form-group">
+                {{ form_errors(form) }}
+                <label for="title">Название:</label>
+                {{ form_widget(form.title, {'attr': {'class':'form-control form-field', 'id': 'title', 'placeholder': 'Введите название'}}) }}
+                {{ form_rest(form) }}
+            </div>
+            <input type="submit" class="btn btn-success" id="send-contact-message" value="Отправить"/>
+            {{ form_end(form) }}
+
+        </div>
+        <div class="tab-pane fade" id="tab-2">
+
+            <form action="{{ path('BloggerBlogBundle_teacher_delete_group') }}" method="POST">
+                <div class="form-group">
+                    <label for="user">Группы:</label>
+                    <select class="form-control" id="group" name="_group">
+                        {% for group in groups %}
+                            <option value="{{ group.id }}">{{ group.title }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <input type="submit" class="btn btn-success" name="login" value="Отправить" />
+            </form>
+
+        </div>
+    </div>
+</div>

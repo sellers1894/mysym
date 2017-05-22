@@ -1,0 +1,42 @@
+{% extends 'BloggerBlogBundle::layout.html.twig' %}
+
+{% block title %}О сайте{% endblock%}
+
+{% block body_title %}О сайте{% endblock %}
+
+{% block body_content %}
+    {% for flashMessage in app.session.flashbag.get('blogger-notice') %}
+        <div class="blogger-notice">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+    <p>Данный ресурс предназначен для размещения и отслеживания студентов математического факультета в процессе прохождения преддипломной практики.</p>
+    <hr>
+    <h3>Контакты</h3>
+    <div class="row">
+        <div class="col-sm-2"><b>Адрес:</b></div>
+        <div class="col-sm-10"><span>Витебск, Московский проспект, 33</span></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2"><b>Телефон:</b></div>
+        <div class="col-sm-10"><span>+375 33 152 14 25</span></div>
+    </div>
+    <hr>
+    <h3>Связаться с нами</h3>
+
+    {{ form_start(form, { 'action': path('BloggerBlogBundle_about'), 'method': 'POST', 'attr': {'id': 'contact-form','class': 'blogger'} }) }}
+    <div class="form-group">
+        {{ form_errors(form) }}
+        {{ form_widget(form.email, {'attr': {'class':'form-control form-field', 'id': 'email', 'placeholder': 'Введите ваш e-mail'}}) }}
+        {{ form_widget(form.body, {'attr': {'class':'form-control form-field', 'id': 'contact-extarea', 'rows': '5', 'placeholder': 'Введите ваше сообщение'}}) }}
+        {{ form_rest(form) }}
+        <input type="submit" class="btn btn-success" id="send-contact-message" value="Отправить"/>
+        <div class="clearfix"></div>
+    </div>
+    {{ form_end(form) }}
+    <hr>
+    <h3>Карта</h3>
+    <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A3adc3a288840c5d2e61a6eab0c7ad591541bd8077340f2c9c89bed8084401c87&amp;width=100%25&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>
+    <hr>
+    <h3>Фотогалерея</h3>
+{% endblock %}

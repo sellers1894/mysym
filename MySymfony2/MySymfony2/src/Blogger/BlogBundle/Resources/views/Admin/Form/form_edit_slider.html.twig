@@ -1,0 +1,50 @@
+{% if message_slider %}
+    <div class="error">{{ message_slider }}</div>
+    <hr>
+{% endif %}
+
+<div class="tabs">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab-slider-1" data-toggle="tab">Добавить</a></li>
+        <li><a href="#tab-slider-2" data-toggle="tab">Удалить</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane fade in active" id="tab-slider-1">
+
+
+            {{ form_start(form, { 'action': path('BloggerBlogBundle_admin_add_slider'), 'method': 'POST', 'attr': {'class': 'blogger'} }) }}
+            <div class="form-group">
+                {{ form_errors(form) }}
+                <label for="title">Название:</label>
+                {{ form_widget(form.title, {'attr': {'class':'form-control form-field', 'id': 'title', 'placeholder': 'Введите название'}}) }}
+                <label for="text">Описание:</label>
+                {{ form_errors(form.text) }}
+                {{ form_widget(form.text, {'attr': {'class':'form-control form-field', 'id': 'text', 'rows': '5', 'placeholder': 'Введите описание'}}) }}
+                <label for="image">Изображение:</label>
+                {{ form_widget(form.image, {'attr': {'class':'form-control form-field', 'id': 'image', 'accept': 'image/jpeg,image/png'}}) }}
+                <label for="company">Компании:</label>
+                {{ form_widget(form.company, {'attr': {'class':'form-control form-field', 'id': 'company'}}) }}
+                {{ form_rest(form) }}
+                <input type="submit" class="btn btn-success" id="send-contact-message" value="Отправить"/>
+                <div class="clearfix"></div>
+            </div>
+            {{ form_end(form) }}
+
+        </div>
+        <div class="tab-pane fade" id="tab-slider-2">
+
+            <form action="{{ path('BloggerBlogBundle_admin_delete_slider') }}" method="POST">
+                <div class="form-group">
+                    <label for="user">Пользователи:</label>
+                    <select class="form-control" id="slider" name="_slider">
+                        {% for slider in sliders %}
+                            <option value="{{ slider.id }}">{{ slider.title }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <input type="submit" class="btn btn-success" name="login" value="Отправить" />
+            </form>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,71 @@
+{% if message_student %}
+    <div class="error">{{ message_student }}</div>
+    <hr>
+{% endif %}
+
+<div class="tabs">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab-student-1" data-toggle="tab">Добавить</a></li>
+        <li><a href="#tab-student-2" data-toggle="tab">Удалить</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane fade in active" id="tab-student-1">
+
+            {{ form_start(form, { 'action': path('BloggerBlogBundle_teacher_add_student'), 'method': 'POST', 'attr': {'class': 'blogger'} }) }}
+            <div class="form-group">
+                {{ form_errors(form) }}
+                <label for="name">Имя:</label>
+                {{ form_widget(form.name, {'attr': {'class':'form-control form-field', 'id': 'name', 'placeholder': 'Введите имя'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_errors(form) }}
+                <label for="last_name">Фамилия:</label>
+                {{ form_widget(form.last_name, {'attr': {'class':'form-control form-field', 'id': 'last_name', 'placeholder': 'Введите фамилию'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_errors(form) }}
+                <label for="email">Email:</label>
+                {{ form_widget(form.email, {'attr': {'class':'form-control form-field', 'id': 'email', 'placeholder': 'Введите email'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_errors(form) }}
+                <label for="date_start">Дата начала:</label>
+                {{ form_widget(form.date_start, {'attr': {'class':'form-control form-field', 'id': 'date_start'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_errors(form) }}
+                <label for="date_finish">Дата завершения:</label>
+                {{ form_widget(form.date_finish, {'attr': {'class':'form-control form-field', 'id': 'date_finish'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_errors(form) }}
+                <label for="group">Группа:</label>
+                {{ form_widget(form.group, {'attr': {'class':'form-control form-field', 'id': 'group'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_errors(form) }}
+                <label for="company">Компания:</label>
+                {{ form_widget(form.company, {'attr': {'class':'form-control form-field', 'id': 'company'}}) }}
+            </div>
+            {{ form_rest(form) }}
+            <input type="submit" class="btn btn-success" id="send-contact-message" value="Отправить"/>
+            {{ form_end(form) }}
+
+        </div>
+        <div class="tab-pane fade" id="tab-student-2">
+
+            <form action="{{ path('BloggerBlogBundle_teacher_delete_student') }}" method="POST">
+                <div class="form-group">
+                    <label for="student">Студенты:</label>
+                    <select class="form-control" id="student" name="_student">
+                        {% for student in students %}
+                            <option value="{{ student.id }}">{{ student.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <input type="submit" class="btn btn-success" name="login" value="Отправить" />
+            </form>
+
+        </div>
+    </div>
+</div>

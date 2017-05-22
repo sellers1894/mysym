@@ -1,0 +1,25 @@
+{% extends 'BloggerBlogBundle::layout.html.twig' %}
+
+{% block title %}Панель преподавателя{% endblock%}
+
+{% block body_title %}Добро пожаловать на страницу преподавателя, {{ app.user.username }}!{% endblock %}
+
+{% block body_content %}
+    <h3>Редактирование компании {{ company.title }}</h3>
+    {% if message_company %}
+        <div class="error">{{ message_company }}</div>
+        <hr>
+    {% endif %}
+    <form action="{{ path('BloggerBlogBundle_teacher_edit_company') }}" method="POST">
+        <input type="hidden" name="_company" value="{{ company.id }}">
+        <div class="form-group">
+            <label for="student">Студенты:</label>
+            <select class="form-control" id="student" name="_student">
+                {% for student in students %}
+                    <option value="{{ student.id }}">{{ student.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <input type="submit" class="btn btn-success" name="login" value="Отправить" />
+    </form>
+{% endblock %}

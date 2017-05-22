@@ -1,0 +1,48 @@
+{% if message_com %}
+    <div class="error">{{ message_com }}</div>
+    <hr>
+{% endif %}
+
+<div class="tabs">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab-company-1" data-toggle="tab">Добавить</a></li>
+        <li><a href="#tab-company-2" data-toggle="tab">Удалить</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane fade in active" id="tab-company-1">
+
+
+            {{ form_start(form, { 'action': path('BloggerBlogBundle_admin_add_company'), 'method': 'POST', 'attr': {'class': 'blogger'} }) }}
+            <div class="form-group">
+                {{ form_errors(form) }}
+                <label for="title">Название:</label>
+                {{ form_widget(form.title, {'attr': {'class':'form-control form-field', 'id': 'title', 'placeholder': 'Введите название'}}) }}
+                <label for="text">Описание:</label>
+                {{ form_errors(form.text) }}
+                {{ form_widget(form.text, {'attr': {'class':'form-control form-field', 'id': 'text', 'rows': '5', 'placeholder': 'Введите описание'}}) }}
+                <label for="image">Изображение:</label>
+                {{ form_widget(form.image, {'attr': {'class':'form-control form-field', 'id': 'image', 'accept': 'image/jpeg,image/png'}}) }}
+                {{ form_rest(form) }}
+                <input type="submit" class="btn btn-success" id="send-contact-message" value="Отправить"/>
+                <div class="clearfix"></div>
+            </div>
+            {{ form_end(form) }}
+
+        </div>
+        <div class="tab-pane fade" id="tab-company-2">
+
+            <form action="{{ path('BloggerBlogBundle_admin_delete_company') }}" method="POST">
+                <div class="form-group">
+                    <label for="user">Пользователи:</label>
+                    <select class="form-control" id="company" name="_company">
+                        {% for company in companies %}
+                            <option value="{{ company.id }}">{{ company.title }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <input type="submit" class="btn btn-success" name="login" value="Отправить" />
+            </form>
+
+        </div>
+    </div>
+</div>

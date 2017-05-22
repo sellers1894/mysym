@@ -1,0 +1,44 @@
+{# src/Blogger/BlogBundle/Resources/views/layout.html.twig #}
+{% extends '::base.html.twig' %}
+
+{% block navigation %}
+    <div class="navbar navbar-inverse" id="top-nav">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target="#responsive-menu">
+                    <span class="sr-only">Открыть навигацию</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="{{ path('BloggerBlogBundle_homepage') }}" class="navbar-brand">Predegree Practice</a>
+            </div>
+            <div class="collapse navbar-collapse" id="responsive-menu">
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ path('BloggerBlogBundle_company') }}">Организации</a></li>
+                    <li><a href="{{ path('BloggerBlogBundle_about') }}">О сайте</a></li>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li><a href="{{ path('admin_home') }}">Админка</a></li>
+                    {% endif %}
+                    {% if is_granted('ROLE_TEACHER') %}
+                        <li><a href="{{ path('BloggerBlogBundle_teacher_home') }}">Панель Преп</a></li>
+                    {% endif %}
+                </ul>
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    {% embed "@BloggerBlog/Form/form_nav_logout.html.twig" %}
+                    {% endembed %}
+                {% else %}
+                    {% embed "@BloggerBlog/Form/form_nav_auth.html.twig" %}
+                    {% endembed %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block sidebar %}
+    {{ render(controller('BloggerBlogBundle:Page:sidebar' ))}}
+
+
+{% endblock %}
+

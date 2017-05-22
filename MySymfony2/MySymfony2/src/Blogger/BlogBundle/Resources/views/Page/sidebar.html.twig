@@ -1,0 +1,15 @@
+<aside class="container-sluit">
+    <h2>Компании</h2>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <nav id="myNavmenu" class="nav-menu nav-menu">
+                <ul class="nav navmenu-nav">
+                    {% for company in companies %}
+                        <li><a href="{{ path('BloggerBlogBundle_company_show', {'id': company.id, 'slug': company.slug}) }}">{{ company.title }}</a></li>
+                    {% endfor %}
+
+                </ul>
+            </nav>
+        </div>
+    </div>
+</aside>
