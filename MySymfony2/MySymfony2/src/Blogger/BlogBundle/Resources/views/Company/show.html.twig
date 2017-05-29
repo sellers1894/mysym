@@ -17,7 +17,9 @@
         </div>
         <hr>
         <div id="accordion" class="panel-group">
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
             {% include 'BloggerBlogBundle:Student:index.html.twig' with { 'groups': groups } %}
+        {% endif %}
         </div>
     </div>
 {% endblock %}
