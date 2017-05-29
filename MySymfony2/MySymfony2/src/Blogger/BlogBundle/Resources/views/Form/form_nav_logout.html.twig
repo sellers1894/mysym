@@ -1,7 +1,7 @@
 <!-- ФОРМА -->
 <form action="" class="navbar-form navbar-right" id="top-auth">
     <div class="form-group">
-        <p id="nav-user-title">Привет!</p>
+        <p id="nav-user-title">Привет, <b><i>{{ app.user.username }}</i></b></p>
     </div>
 
     <a href="{{ path('_security_logout') }}" class="btn btn-primary">

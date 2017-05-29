@@ -21,7 +21,7 @@
                         <li><a href="{{ path('admin_home') }}">Админка</a></li>
                     {% endif %}
                     {% if is_granted('ROLE_TEACHER') %}
-                        <li><a href="{{ path('BloggerBlogBundle_teacher_home') }}">Панель Преп</a></li>
+                        <li><a href="{{ path('BloggerBlogBundle_teacher_home') }}">Панель Преподавателя</a></li>
                     {% endif %}
                 </ul>
                 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
