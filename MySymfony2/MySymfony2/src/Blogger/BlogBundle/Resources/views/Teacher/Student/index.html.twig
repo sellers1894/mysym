@@ -1,0 +1,50 @@
+{% extends 'BloggerBlogBundle::layout.html.twig' %}
+
+{% block title %}Панель преподавателя{% endblock%}
+
+{% block body_title %}Добро пожаловать на страницу преподавателя, <b><i>{{ app.user.username }}</i></b>!{% endblock %}
+
+{% block body_content %}
+    <h1>Список студентов</h1>
+
+    <table class="table">
+        <thead class="bg-success">
+        <tr>
+            <th>Id</th>
+            <th>Имя</th>
+            <th>Фамилия</th>
+            <th>Email</th>
+            <th>Начало</th>
+            <th>Оценка</th>
+            <th>Группа</th>
+            <th>Опции</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for student in students %}
+            <tr>
+                <td><a href="{{ path('BloggerBlogBundle_teacher_student_show', { 'id': student.id }) }}">{{ student.id }}</a></td>
+                <td>{{ student.name }}</td>
+                <td>{{ student.lastname }}</td>
+                <td>{{ student.email }}</td>
+                <td>{% if student.datestart %}{{ student.datestart|date('d.m.Y') }}{% endif %}</td>
+                <td>{% if student.datefinish %}{{ student.datefinish|date('d.m.Y') }}{% endif %}</td>
+                <td>{{ student.group.title }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('BloggerBlogBundle_teacher_student_show', { 'id': student.id }) }}">Просмотр</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('BloggerBlogBundle_teacher_student_edit', { 'id': student.id }) }}">Редактирование</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-success" href="{{ path('BloggerBlogBundle_teacher_student_new') }}">Добавить студента</a>
+
+{% endblock %}

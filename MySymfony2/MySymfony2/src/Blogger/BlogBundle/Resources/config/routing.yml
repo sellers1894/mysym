@@ -99,7 +99,9 @@ BloggerBlogBundle_teacher_edit_company_student:
     requirements:
            methods:  POST
 
-
+BloggerBlogBundle_teacher_student:
+    resource: "@BloggerBlogBundle/Resources/config/routing/student.yml"
+    prefix:   /student/
 
 
 

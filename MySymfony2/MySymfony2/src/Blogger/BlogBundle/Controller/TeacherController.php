@@ -135,7 +135,7 @@ class TeacherController extends Controller{
 
         return $this->render('BloggerBlogBundle:Teacher/Form:edit_student.html.twig', array(
             'students' => $students,
-            'student' => $student,
+            'Student' => $student,
             'form'    => $form->createView(),
             "message_student" => $message
         ));
@@ -196,7 +196,7 @@ class TeacherController extends Controller{
                         $student = $student[0];
                         return $this->render('BloggerBlogBundle:Teacher/EditCompany:student.html.twig', array(
                             'company' => $company,
-                            'student' => $student,
+                            'Student' => $student,
                             "message_company" => $message
                         ));
                     }
@@ -254,7 +254,7 @@ class TeacherController extends Controller{
 
                         return $this->render('BloggerBlogBundle:Teacher/EditCompany:student.html.twig', array(
                             'company' => $company,
-                            'student' => $student,
+                            'Student' => $student,
                             "message_company" => $message
                         ));
                     } else {

@@ -77,7 +77,7 @@ class GroupStudent{
     }
 
     /**
-     * Add student
+     * Add Student
      *
      * @param \Blogger\BlogBundle\Entity\Student $student
      *
@@ -91,7 +91,7 @@ class GroupStudent{
     }
 
     /**
-     * Remove student
+     * Remove Student
      *
      * @param \Blogger\BlogBundle\Entity\Student $student
      */
@@ -101,7 +101,7 @@ class GroupStudent{
     }
 
     /**
-     * Get student
+     * Get Student
      *
      * @return \Doctrine\Common\Collections\Collection
      */

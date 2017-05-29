@@ -1,0 +1,24 @@
+BloggerBlogBundle_teacher_student_index:
+    path:     /
+    defaults: { _controller: "BloggerBlogBundle:Student:index" }
+    methods:  GET
+
+BloggerBlogBundle_teacher_student_show:
+    path:     /{id}/show
+    defaults: { _controller: "BloggerBlogBundle:Student:show" }
+    methods:  GET
+
+BloggerBlogBundle_teacher_student_new:
+    path:     /new
+    defaults: { _controller: "BloggerBlogBundle:Student:new" }
+    methods:  [GET, POST]
+
+BloggerBlogBundle_teacher_student_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BloggerBlogBundle:Student:edit" }
+    methods:  [GET, POST]
+
+BloggerBlogBundle_teacher_student_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BloggerBlogBundle:Student:delete" }
+    methods:  DELETE

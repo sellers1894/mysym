@@ -18,6 +18,8 @@
             </div>
             <div class="tab-pane fade" id="main-tab-2">
                 <h3>Редактирование студентов</h3>
+                <a class="btn btn-danger" href="{{ path('BloggerBlogBundle_teacher_student_index') }}">Полное редактирование студентов</a>
+                <hr>
                 {{  render(controller("BloggerBlogBundle:Teacher:addStudent")) }}
             </div>
             <div class="tab-pane fade" id="main-tab-3">

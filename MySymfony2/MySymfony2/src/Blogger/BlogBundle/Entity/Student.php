@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Mapping\ClassMetadata;
 
 /**
  * @ORM\Entity(repositoryClass="Blogger\BlogBundle\Entity\Repository\StudentRepository")
- * @ORM\Table(name="student")
+ * @ORM\Table(name="Student")
  *  @UniqueEntity(
  *     fields={"email"},
  *     message="Уже есть."

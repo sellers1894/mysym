@@ -157,7 +157,7 @@ class Company{
     }
 
     /**
-     * Add student
+     * Add Student
      *
      * @param \Blogger\BlogBundle\Entity\Student $student
      *
@@ -171,7 +171,7 @@ class Company{
     }
 
     /**
-     * Remove student
+     * Remove Student
      *
      * @param \Blogger\BlogBundle\Entity\Student $student
      */
@@ -181,7 +181,7 @@ class Company{
     }
 
     /**
-     * Get student
+     * Get Student
      *
      * @return \Doctrine\Common\Collections\Collection
      */
