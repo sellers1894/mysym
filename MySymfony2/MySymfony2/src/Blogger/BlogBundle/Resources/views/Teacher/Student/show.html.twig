@@ -1,56 +1,60 @@
-{% extends 'base.html.twig' %}
+{% extends 'BloggerBlogBundle::layout.html.twig' %}
 
-{% block body %}
-    <h1>Student</h1>
+{% block title %}Панель преподавателя{% endblock%}
 
-    <table>
+{% block body_title %}Добро пожаловать на страницу преподавателя, <b><i>{{ app.user.username }}</i></b>!{% endblock %}
+
+{% block body_content %}
+    <h1>Студент <i>{{ student.name }}</i></h1>
+
+    <table class="table">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ student.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ student.name }}</td>
-            </tr>
-            <tr>
-                <th>Last_name</th>
-                <td>{{ student.lastname }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ student.email }}</td>
-            </tr>
-            <tr>
-                <th>Date_start</th>
-                <td>{% if student.datestart %}{{ student.datestart|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Date_finish</th>
-                <td>{% if student.datefinish %}{{ student.datefinish|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Protect</th>
-                <td>{% if student.protect %}Yes{% else %}No{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Mark</th>
-                <td>{{ student.mark }}</td>
-            </tr>
+        <tr>
+            <th>Id</th>
+            <td>{{ student.id }}</td>
+        </tr>
+        <tr>
+            <th>Имя</th>
+            <td>{{ student.name }}</td>
+        </tr>
+        <tr>
+            <th>Фамилия</th>
+            <td>{{ student.lastname }}</td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>{{ student.email }}</td>
+        </tr>
+        <tr>
+            <th>Группа</th>
+            <td>{{ student.group.title }}</td>
+        </tr>
+        <tr>
+            <th>Дата начала</th>
+            <td>{% if student.datestart %}{{ student.datestart|date('d.m.Y') }}{% endif %}</td>
+        </tr>
+        <tr>
+            <th>Дата завершения</th>
+            <td>{% if student.datefinish %}{{ student.datefinish|date('d.m.Y') }}{% endif %}</td>
+        </tr>
+        <tr>
+            <th>Защита</th>
+            <td>{{  student.protect|is_protect }}</td>
+        </tr>
+        <tr>
+            <th>Оценка</th>
+            <td>{{ student.mark|is_mark }}</td>
+        </tr>
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('student_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('student_edit', { 'id': student.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    <hr>
+    <a class="btn btn-primary" href="{{ path('BloggerBlogBundle_teacher_student_index') }}">Вернуться назад к списку студентов</a>
+    <a class="btn btn-primary" href="{{ path('BloggerBlogBundle_teacher_student_edit', { 'id': student.id }) }}">Редактировать</a>
+    <hr>
+    {{ form_start(delete_form) }}
+    <input class="btn btn-danger" type="submit" value="Удалить студента">
+    {{ form_end(delete_form) }}
+
 {% endblock %}
+

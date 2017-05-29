@@ -42,11 +42,11 @@ class StudentController extends Controller
             $em->persist($student);
             $em->flush();
 
-            return $this->redirectToRoute('student_show', array('id' => $student->getId()));
+            return $this->redirectToRoute('BloggerBlogBundle_teacher_student_show', array('id' => $student->getId()));
         }
 
-        return $this->render('Student/new.html.twig', array(
-            'Student' => $student,
+        return $this->render('BloggerBlogBundle:Teacher/Student:new.html.twig', array(
+            'student' => $student,
             'form' => $form->createView(),
         ));
     }
@@ -59,8 +59,8 @@ class StudentController extends Controller
     {
         $deleteForm = $this->createDeleteForm($student);
 
-        return $this->render('Student/show.html.twig', array(
-            'Student' => $student,
+        return $this->render('BloggerBlogBundle:Teacher/Student:show.html.twig', array(
+            'student' => $student,
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -78,11 +78,11 @@ class StudentController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('student_edit', array('id' => $student->getId()));
+            return $this->redirectToRoute('BloggerBlogBundle_teacher_student_edit', array('id' => $student->getId()));
         }
 
-        return $this->render('Student/edit.html.twig', array(
-            'Student' => $student,
+        return $this->render('BloggerBlogBundle:Teacher/Student:edit.html.twig', array(
+            'student' => $student,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
