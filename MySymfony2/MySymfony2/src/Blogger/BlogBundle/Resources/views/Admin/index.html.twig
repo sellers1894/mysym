@@ -3,21 +3,29 @@
 {% block title %}Adminka{% endblock%}
 
 
-{% block body_title %}Добро пожаловать на администраторскую страницу, {{ app.user.username }}!{% endblock %}
+{% block body_title %}Добро пожаловать на администраторскую страницу, <b><i>{{ app.user.username }}!</i></b>{% endblock %}
 
 {% block body_content %}
-    <h3>Редактирование пользователей</h3>
-    {{  render(controller("BloggerBlogBundle:Admin:getEditUserForm")) }}
-    <hr>
-    <hr>
-    <hr>
-    <hr>
-    <h3>Редактирование компаний</h3>
-
-    {{  render(controller("BloggerBlogBundle:Admin:addCompany")) }}
-    <hr>
-    <hr>
-    <hr>
-    <h3>Редактирование Слайдера</h3>
-    {{  render(controller("BloggerBlogBundle:Admin:addSlider")) }}
+    <h2>Редактирование:</h2>
+    <div class="tabs">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#tab-main-1" data-toggle="tab">Пользователи</a></li>
+            <li><a href="#tab-main-2" data-toggle="tab">Компании</a></li>
+            <li><a href="#tab-main-3" data-toggle="tab">Слайдер</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane fade in active" id="tab-main-1">
+                <hr>
+                {{  render(controller("BloggerBlogBundle:Admin:getEditUserForm")) }}
+            </div>
+            <div class="tab-pane fade" id="tab-main-2">
+                <hr>
+                {{  render(controller("BloggerBlogBundle:Admin:addCompany")) }}
+            </div>
+            <div class="tab-pane fade" id="tab-main-3">
+                <hr>
+                {{  render(controller("BloggerBlogBundle:Admin:addSlider")) }}
+            </div>
+        </div>
+    </div>
 {% endblock %}

@@ -29,7 +29,7 @@
                 <td>{{ student.email }}</td>
                 <td>{% if student.datestart %}{{ student.datestart|date('d.m.Y') }}{% endif %}</td>
                 <td>{% if student.datefinish %}{{ student.datefinish|date('d.m.Y') }}{% endif %}</td>
-                <td>{{ student.group.title }}</td>
+                <td class="text-center">{{ student.group.title }}</td>
                 <td>
                     <ul>
                         <li>
