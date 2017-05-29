@@ -13,7 +13,7 @@ class BloggerBlogExtension extends \Twig_Extension{
     }
 
     public function is_protect($param){
-        return (is_null($param)? "нет": $param);
+        return (is_null($param)? "нет": "да");
     }
     public function is_mark($param){
         return (is_null($param)? "нет": intval($param));

@@ -18,7 +18,9 @@
                 {{ form_widget(form.title, {'attr': {'class':'form-control form-field', 'id': 'title', 'placeholder': 'Введите название'}}) }}
                 {{ form_rest(form) }}
             </div>
-            <input type="submit" class="btn btn-success" id="send-contact-message" value="Отправить"/>
+            <div class="form-group">
+                <input type="submit" class="btn btn-success" id="send-contact-message" value="Отправить"/>
+            </div>
             {{ form_end(form) }}
 
         </div>
@@ -33,7 +35,9 @@
                         {% endfor %}
                     </select>
                 </div>
-                <input type="submit" class="btn btn-success" name="login" value="Отправить" />
+                <div class="form-group">
+                    <input type="submit" class="btn btn-success" name="login" value="Отправить" />
+                </div>
             </form>
 
         </div>
