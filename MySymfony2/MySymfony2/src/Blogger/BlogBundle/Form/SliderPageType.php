@@ -27,6 +27,9 @@ class SliderPageType extends AbstractType
             ->add('company', EntityType::class, array(
                 'class' => 'Blogger\BlogBundle\Entity\Company',
                 'choice_label' => 'title',
+//                'placeholder' => 'Выберите',
+//                'empty_data'  => null,
+//                'required' => false
             ));
     }
     

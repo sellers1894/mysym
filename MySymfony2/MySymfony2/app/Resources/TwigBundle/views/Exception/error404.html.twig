@@ -1,0 +1,10 @@
+{% extends 'BloggerBlogBundle::layout.html.twig' %}
+
+{% block title %}Ошибка 404{% endblock%}
+
+{% block body_title %}Ошибка 404{% endblock %}
+
+{% block body_content %}
+    <h2>Запрашиваемая страница не найдена.</h2>
+    <h3><a href="{{ path('BloggerBlogBundle_homepage') }}">Вернуться на главную</a></h3>
+{% endblock %}
